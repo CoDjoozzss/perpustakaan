@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Perpustakaan Online</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+  <header class="atas">
+    <div class="wadah atas-isi">
+      <h1>📚 Perpustakaan Online</h1>
+      <div class="akun">
+        <div id="tombolGoogle"></div>
+        <div id="infoAkun" hidden>
+          <span id="namaAkun"></span>
+          <button id="btnProfil" class="kecil">Profil</button>
+          <button id="btnKeluar" class="kecil">Keluar</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wadah">
+    <p class="intro">Pinjam buku fisik, diantar ke rumah, dijemput lagi saat tenggat. Gratis untuk pelajar dan mahasiswa.</p>
+
+    <nav class="tab">
+      <button id="tabKatalog" class="aktif">Katalog</button>
+      <button id="tabPesanan">Pesanan Saya</button>
+    </nav>
+
+    <section id="viewKatalog">
+      <div class="filter">
+        <input id="cari" type="search" placeholder="Cari judul atau penulis...">
+        <select id="filterKategori"><option value="">Semua kategori</option></select>
+      </div>
+      <div id="daftarBuku" class="grid"><p class="info">Memuat buku...</p></div>
+    </section>
+
+    <section id="viewPesanan" hidden>
+      <div id="daftarPesanan"></div>
+    </section>
+  </main>
+
+  <dialog id="dialogProfil">
+    <form id="formProfil">
+      <h2>Profil pengiriman</h2>
+      <p class="info">Dipakai kurir untuk mengantar dan menjemput buku.</p>
+      <label>Nama lengkap<input name="nama" required maxlength="80"></label>
+      <label>Nomor HP<input name="nomor_hp" type="tel" required maxlength="20" placeholder="08xxxxxxxxxx"></label>
+      <label>Alamat lengkap<textarea name="alamat" required maxlength="250" rows="3"></textarea></label>
+      <div class="aksi">
+        <button type="button" class="sekunder" data-tutup>Batal</button>
+        <button type="submit">Simpan</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="dialogPesan">
+    <form id="formPesan">
+      <h2>Pinjam buku</h2>
+      <p id="judulPesan" class="judul-pesan"></p>
+      <fieldset>
+        <legend>Masa pinjam</legend>
+        <label class="pilihan"><input type="radio" name="durasi" value="7" checked> 7 hari</label>
+        <label class="pilihan"><input type="radio" name="durasi" value="14"> 14 hari</label>
+      </fieldset>
+      <label>Tanggal antar<input name="tanggalAntar" type="date" required></label>
+      <label>Slot antar<select name="slotAntar"></select></label>
+      <label>Slot jemput (saat tenggat)<select name="slotJemput"></select></label>
+      <p id="ringkasTenggat" class="info"></p>
+      <p class="info">Denda telat Rp1.000 per hari. Rusak ringan Rp10.000, rusak berat atau hilang ganti harga buku. Dibayar tunai ke kurir.</p>
+      <div class="aksi">
+        <button type="button" class="sekunder" data-tutup>Batal</button>
+        <button type="submit" id="btnKirimPesan">Pesan</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>

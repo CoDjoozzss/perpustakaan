@@ -1,0 +1,83 @@
+:root {
+  --warna: #2f5d50;
+  --warna-gelap: #234a3f;
+  --latar: #f6f4ef;
+  --kartu: #ffffff;
+  --teks: #1f2a27;
+  --redup: #6b7773;
+  --garis: #e3dfd5;
+  --bahaya: #b3402f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--latar); color: var(--teks); line-height: 1.5;
+}
+.wadah { max-width: 960px; margin: 0 auto; padding: 0 16px; }
+.atas { background: var(--kartu); border-bottom: 1px solid var(--garis); position: sticky; top: 0; z-index: 5; }
+.atas-isi { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 10px; padding-bottom: 10px; flex-wrap: wrap; }
+h1 { font-size: 1.15rem; margin: 0; }
+.akun { display: flex; align-items: center; }
+#infoAkun { display: flex; align-items: center; gap: 8px; font-size: .9rem; }
+#infoAkun[hidden] { display: none; }
+.intro { color: var(--redup); margin: 16px 0; }
+.info { color: var(--redup); font-size: .85rem; margin: 6px 0; }
+
+button {
+  font: inherit; cursor: pointer; border: 0; border-radius: 8px;
+  background: var(--warna); color: #fff; padding: 9px 16px;
+}
+button:hover { background: var(--warna-gelap); }
+button:disabled { background: #b9c2bf; cursor: not-allowed; }
+button.sekunder { background: #e8e5dc; color: var(--teks); }
+button.sekunder:hover { background: #dcd8cc; }
+button.kecil { padding: 4px 10px; font-size: .8rem; background: #e8e5dc; color: var(--teks); }
+
+.tab { display: flex; gap: 6px; margin-bottom: 14px; }
+.tab button { background: #e8e5dc; color: var(--teks); }
+.tab button.aktif { background: var(--warna); color: #fff; }
+
+.filter { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+input, select, textarea {
+  font: inherit; padding: 9px 10px; border: 1px solid var(--garis);
+  border-radius: 8px; background: #fff; width: 100%;
+}
+.filter input { flex: 2 1 200px; width: auto; }
+.filter select { flex: 1 1 140px; width: auto; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; padding-bottom: 32px; }
+.kartu { background: var(--kartu); border: 1px solid var(--garis); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 6px; }
+.sampul { height: 72px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 700; color: #fff; }
+.kartu h3 { font-size: 1rem; margin: 4px 0 0; }
+.penulis { color: var(--redup); font-size: .88rem; margin: 0; }
+.chip { display: inline-block; font-size: .75rem; padding: 2px 8px; border-radius: 99px; background: #eef2ef; color: var(--warna); }
+.meta { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
+.kartu button { margin-top: auto; }
+
+.pesanan { background: var(--kartu); border: 1px solid var(--garis); border-radius: 12px; padding: 14px; margin-bottom: 10px; }
+.pesanan h3 { margin: 0 0 6px; font-size: 1rem; }
+.pesanan p { margin: 2px 0; font-size: .9rem; }
+.status { font-size: .75rem; padding: 2px 10px; border-radius: 99px; font-weight: 600; }
+.s-Dipinjam { background: #e1efe9; color: var(--warna); }
+.s-Dijadwalkan { background: #e6edf7; color: #2d4f86; }
+.s-Terlambat { background: #f8e0db; color: var(--bahaya); }
+.s-Dikembalikan { background: #ececec; color: #555; }
+.denda { color: var(--bahaya); font-weight: 600; }
+
+dialog { border: 0; border-radius: 14px; padding: 20px; width: min(420px, 92vw); }
+dialog::backdrop { background: rgba(0, 0, 0, .4); }
+dialog h2 { margin: 0 0 8px; font-size: 1.1rem; }
+dialog label { display: block; font-size: .9rem; margin: 10px 0; }
+dialog label input, dialog label select, dialog label textarea { margin-top: 4px; }
+fieldset { border: 1px solid var(--garis); border-radius: 8px; margin: 10px 0; display: flex; gap: 16px; }
+.pilihan { display: flex !important; align-items: center; gap: 6px; margin: 0 !important; }
+.pilihan input { width: auto; margin: 0 !important; }
+.judul-pesan { font-weight: 600; margin: 0 0 4px; }
+.aksi { display: flex; justify-content: flex-end; gap: 8px; margin-top: 14px; }
+
+#toast {
+  position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%) translateY(20px);
+  background: #222; color: #fff; padding: 10px 18px; border-radius: 10px; font-size: .9rem;
+  opacity: 0; pointer-events: none; transition: .25s; max-width: 90vw; text-align: center; z-index: 20;
+}
+#toast.tampil { opacity: 1; transform: translateX(-50%) translateY(0); }
